@@ -1,11 +1,17 @@
+# Inserir  cabeçalho
+print("\n=========== SISTEMA BANCÁRIO ===========")
+
 menu = """
+MENU
 
 [d] Depositar
 [s] Sacar
 [e] Extrato
 [q] Sair
 
-=> """
+========================================
+Digite uma das opções.
+=>"""
 
 saldo = 0
 limite = 500
@@ -13,20 +19,21 @@ extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
+
 while True:
-
+    
     opcao = input(menu)
-
+# Operação de Deposito
     if opcao == "d":
         valor = float(input("Informe o valor do depósito: "))
-
+#       Verificar se foi digitado valores negativos
         if valor > 0:
             saldo += valor
-            extrato += f"Depósito: R$ {valor:.2f}\n"
-
+            extrato += f"Depósito: R$ {valor:.2f}\n" 
         else:
             print("Operação falhou! O valor informado é inválido.")
-
+     
+# Operação de Saque
     elif opcao == "s":
         valor = float(input("Informe o valor do saque: "))
 
@@ -44,7 +51,7 @@ while True:
 
         elif excedeu_saques:
             print("Operação falhou! Número máximo de saques excedido.")
-
+#       Verificar se foi digitado valores negativos
         elif valor > 0:
             saldo -= valor
             extrato += f"Saque: R$ {valor:.2f}\n"
@@ -52,15 +59,22 @@ while True:
 
         else:
             print("Operação falhou! O valor informado é inválido.")
-
+# Operação de Extrato
     elif opcao == "e":
         print("\n================ EXTRATO ================")
         print("Não foram realizadas movimentações." if not extrato else extrato)
         print(f"\nSaldo: R$ {saldo:.2f}")
-        print("==========================================")
-
+        print("===========================================")
+# Opção para finalizar o programa
     elif opcao == "q":
         break
-
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
+
+# mensagem na parada da aplicação e saldação
+print("""
+Operação Finalizada!. 
+
+Agradecemos sua visita, 
+tenha um excepcional dia.
+        """)
